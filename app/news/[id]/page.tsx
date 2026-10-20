@@ -8,6 +8,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
+  if (posts.length === 0) return [{ id: "none" }];
   return posts.map((post) => ({
     id: post.id,
   }));
